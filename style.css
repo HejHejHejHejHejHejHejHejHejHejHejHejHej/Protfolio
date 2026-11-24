@@ -26,6 +26,11 @@ STYLE.CSS - global styling för webbsidan
    --clr-navbar-shadow: 0 4px 12px rgb(100, 61, 61);  /* för ljus UI använd en ljusgrå nyans */
    --clr-menu-shadow: 0 4px 24px  rgb(100, 61, 61);   /* för mörkt UI använd en mörkare nyans av cta */
 
+   --clr-card-background: rgb(120, 80, 80);
+   --clr-card-border: rgb(80, 40, 40);
+
+   --clr-block-image-border: linear-gradient(180deg, black, rgb(108, 69, 69));
+
    --menu-dropdown-size: 1em;  /* hur stora ska dropdown-menyn vara? */
    --menu-item-size: 1em;        /* hur stort ska gränssnittet vara? */
    --border-radius: 0.5rem;      /* rundade kanter */
@@ -80,7 +85,7 @@ main {
    height: 80vh;
 
    padding-inline: 1rem;
-   text-align: center;
+   text-align: left;
 }
 
 .primary-navigation {
@@ -121,6 +126,10 @@ img {
 
 .logo {
    width: calc(var(--menu-item-size) * 1.3);
+}
+
+.logo2{
+   width: 2.2rem;
 }
 
 .logo g path{
@@ -375,19 +384,37 @@ RESPONSIVITET
 }
 
 .card{
-   display: flex;
-   margin: 0.5rem;
-   padding: 0.5rem 2rem 0.5rem 2rem;
-   background-color: rgb(120, 80, 80);
+   display: grid;
+   grid-template-columns: 1fr 1fr;
+   grid-template-rows: 0.1fr 2fr;
+   padding-bottom: 0.2rem;
+   background-color: var(--clr-card-background);
    text-decoration: none;
-   border: 5px solid rgb(80, 40, 40);
-   align-items: center;
-   justify-content: space-between;
-   color: rgb(40, 0, 0);
+   border: 5px solid var(--clr-card-border);
+   color: var(--clr-copy);
    width: 40rem;
+   max-width: 90vw;
+}
+.card-image{
+   grid-row: span 2;
+   place-self: end;
+   align-self: center;
+   margin-right: 0.2rem;
+}
+.card-titel{
+   margin: 0;
+   margin-top: 0.2rem;
+   align-self: center;
+}
+.card-text{
+   margin: 0;
+   margin-top: 0.2rem;
+}
+.card-titel, .card-text{
+   margin-left: 0.3rem;
 }
 .card:hover{
-   transition: box-shadow 250ms ease-in-out;
+   transition: box-shadow 200ms ease-in-out;
    box-shadow: 0px 4px 10px;
 }
 .rounded{
@@ -396,14 +423,15 @@ RESPONSIVITET
 .block-image{
    max-width: 13rem;
    display: block;
-   margin: 0.5rem;
    padding: 0.3rem;
-   background: linear-gradient(180deg, black, rgb(108, 69, 69));
+   background: var(--clr-block-image-border);
+}
+.center-left-text {
+   display: flex;
+   justify-content: center;
 }
 .container1{
-   display: grid;
-   grid-template-columns: 1fr;
-}
-.grid-item{
-   grid-column: span ;
+   display: flex;
+   flex-direction: column;
+   gap: 1rem;
 }
